@@ -7,14 +7,16 @@ public class Productos {
     // Creacion de los atributos.
     private final String nombre;
     private double precio;
+    private int stock;
 
     // Constructor:
-    public Productos (String nombre, double precio) {
+    public Productos(String nombre, double precio, int stock) {
         this.nombre = nombre;
         this.precio = precio;
+        this.stock = stock;
     }
 
-    // Getters:
+    //
     public String getNombre() {
         return nombre;
     }
@@ -23,11 +25,12 @@ public class Productos {
         return precio;
     }
 
-    
-    // Setter:
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public int getStock() {
+        return stock;
     }
+    
+
+    
     
     
     
