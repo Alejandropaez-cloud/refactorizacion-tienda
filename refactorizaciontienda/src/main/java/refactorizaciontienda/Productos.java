@@ -14,6 +14,25 @@ public class Productos {
         this.precio = precio;
     }
 
+    // Getters:
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    
+    // Setter:
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+    
+    
+    
+
+    
     
 
 }
