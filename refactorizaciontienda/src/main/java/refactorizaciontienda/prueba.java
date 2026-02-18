@@ -33,7 +33,8 @@ public class prueba {
         p.add(45.0);
         s.add(2);
 
-        while (true) {
+        boolean salida = true;
+        while (salida) {
             System.out.println("""
                     ---------Tienda---------
                     
@@ -86,10 +87,30 @@ public class prueba {
                     break;
                     }
                     }
-                break;
+                    if (pos != -1) {
+                    System.out.println("Producto encontrado: " + n.get(pos));
+                    System.out.println("Precio: " + p.get(pos) + "€ | Stock: " + s.get(pos));
+                    System.out.print("Cantidad a comprar: ");
+                    int cant = sc.nextInt();
+
+                    if (s.get(pos) >= cant) {
+                        double total = cant * p.get(pos);
+
+                        // Hay números fijos que se utilizan en el código
+                        if (total > 50) {
+                            System.out.println("¡Oferta! Descuento aplicado por compra superior a 50€");
+                            total = total * 0.90;
+                        }
+
+                        s.set(pos, s.get(pos) - cant); // Actualizar stock
+                        System.out.println("Venta realizada. Total a pagar: " + total + "€");
+                    }
+                }
+                    break;
                 case 4:
                     System.out.println("Saliendo...");
-                    break;
+                    salida = false;
+                    
                 case 5:
 
             }
