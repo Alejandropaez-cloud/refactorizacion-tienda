@@ -75,17 +75,48 @@ public class prueba {
                     }
                 break;
                 case 3:
-                    System.out.println("\n--- VENTA ---");
-                    System.out.print("Introduzca nombre del producto a vender: ");
-                    String prod = sc.next();
+                   System.out.println("\n--- VENTA ---");
+                System.out.print("Introduzca nombre del producto a vender: ");
+                String prod = sc.next();
 
-                    int pos = -1;
-                    for (int i = 0; i < n.size(); i++) {
+                int pos = -1;
+                for (int i = 0; i < n.size(); i++) {
                     if (n.get(i).equalsIgnoreCase(prod)) {
-                    pos = i;
-                    break;
+                        pos = i;
+                        break;
                     }
+                }
+
+                if (pos != -1) {
+                    System.out.println("Producto encontrado: " + n.get(pos));
+                    System.out.println("Precio: " + p.get(pos) + "€ | Stock: " + s.get(pos));
+                    System.out.print("Cantidad a comprar: ");
+                    int cant = sc.nextInt();
+
+                    if (s.get(pos) >= cant) {
+                        double total = cant * p.get(pos);
+
+                        // Hay números fijos que se utilizan en el código
+                        if (total > 50) {
+                            System.out.println("¡Oferta! Descuento aplicado por compra superior a 50€");
+                            total = total * 0.90;
+                        }
+
+                        s.set(pos, s.get(pos) - cant); // Actualizar stock
+                        System.out.println("Venta realizada. Total a pagar: " + total + "€");
+
+                        // Debería ser Singleton
+                        System.out.println("[LOG SYSTEM]: Venta de " + cant + "x " + n.get(pos) + " registrada.");
+                        if (s.get(pos) < 3) {
+                            System.out.println("[LOG SYSTEM]: ALERTA DE STOCK BAJO para " + n.get(pos));
+                        }
+
+                    } else {
+                        System.out.println("Error: No hay suficiente stock.");
                     }
+                } else {
+                    System.out.println("Error: Producto no encontrado.");
+                }
                 break;
                 case 4:
                     System.out.println("Saliendo...");
